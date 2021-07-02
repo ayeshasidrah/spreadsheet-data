@@ -5,7 +5,9 @@ from pprint import pprint       # to print a more organised output import pprint
 
 
   # define the scope
-scope =["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
+scope =["https://spreadsheets.google.com/feeds",
+        'https://www.googleapis.com/auth/spreadsheets',
+        "https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
 
   # add credentials to the account
 creds = ServiceAccountCredentials.from_json_keyfile_name("cred.json", scope)
