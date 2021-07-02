@@ -17,25 +17,42 @@ client = gspread.authorize(creds)
 sheet = client.open("Mysheet").sheet1
 
   # to get all records of data
-data = sheet.get_all_records()
-pprint(data)
+def get_records():
+    data = sheet.get_all_records()
+    pprint(data)
 
-row = sheet.row_values(1)
-col = sheet.col_values(3)
+get_records()
 
-  # to get the value at specific cell
-cell = sheet.cell(2,2).value
-pprint(row)
+class get_row_col():
+    def __init__(self,row ,col):
+        self.row = row
+        self.col = col
 
-  # to insert a row in spreadsheet
-  #insertRow = [5, "huawei", "excellent"]
-  #sheet.insert_row(row,3)
+    def get_row_col(row,col):
+        row = sheet.row_values(1)
+        col = sheet.col_values(3)
+        cell = sheet.cell(2, 2).value
+        pprint(row)
+        pprint(col)
+     # to get the value at particular cell
+        pprint(cell)
+
+    # to insert a row in spreadsheet
+def insert_into_spreadsheet(row):
+
+    insertRow = [5, "huawei", "excellent"]
+    sheet.insert_row(row,3)
+    
+    
   # to delete a row at 4
   #sheet.delete_row(4)
 
   #converting the dictionary to pandas dataframe
 class data_tables():
+    def __init__(self):
+        self.records_df = pd.Dataframe.from_dict(data=None)
+        
     def data_df(self, data):
-        records_df = pd.Dataframe.from_dict(data)
+        records_df = pd.Dataframe.from_dict(data=data)
         records = records_df.head()
         print(records)
